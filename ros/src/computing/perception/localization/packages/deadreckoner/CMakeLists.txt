@@ -29,3 +29,10 @@ add_executable(deadreckoner
 target_link_libraries(deadreckoner
   ${catkin_LIBRARIES}
 )
+
+install(TARGETS
+  deadreckoner
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
