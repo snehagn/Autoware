@@ -62,6 +62,7 @@ private:
   double orientation_time_, position_time_;
   ros::Time current_time_, orientation_stamp_;
   tf::TransformBroadcaster br_;
+  bool use_mgrs_;
 
   // callbacks
   void callbackFromNmeaSentence(const nmea_msgs::Sentence::ConstPtr &msg);
@@ -80,3 +81,4 @@ std::vector<std::string> split(const std::string &string);
 
 }  // gnss_localizer
 #endif  // NMEA2TFPOSE_CORE_H
+
