@@ -4,7 +4,7 @@ project(map_tools)
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(PCL REQUIRED)
-find_package(PROJ REQUIRED)
+#find_package(PROJ REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
         roscpp
@@ -25,9 +25,9 @@ catkin_package(
 
 SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
 
-include_directories(include ${catkin_INCLUDE_DIRS} ${PROJ_INCLUDE_DIR})
+include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(coodinate_test nodes/coordinate_transformer/coodinate_test.cpp nodes/coordinate_transformer/mgrs_converter.cpp)
+add_executable(coordinate_test nodes/coordinate_transformer/coordinate_test.cpp nodes/coordinate_transformer/mgrs_converter.cpp)
 add_executable(pcd_latlon2mgrs nodes/coordinate_transformer/pcd_latlon2mgrs.cpp nodes/coordinate_transformer/mgrs_converter.cpp)
 add_executable(pcd_jpxy2mgrs nodes/coordinate_transformer/pcd_jpxy2mgrs.cpp nodes/coordinate_transformer/mgrs_converter.cpp)
 add_executable(pcd_filter nodes/pcd_filter/pcd_filter.cpp)
@@ -38,9 +38,9 @@ add_executable(pcd2csv nodes/pcd_converter/pcd2csv.cpp)
 add_executable(map_extender nodes/map_extender/map_extender.cpp)
 add_executable(pcd_grid_divider nodes/pcd_grid_divider/pcd_grid_divider.cpp)
 
-target_link_libraries(coodinate_test ${catkin_LIBRARIES} ${PROJ_LIBRARIES})
-target_link_libraries(pcd_latlon2mgrs ${catkin_LIBRARIES} ${PROJ_LIBRARIES})
-target_link_libraries(pcd_jpxy2mgrs ${catkin_LIBRARIES} ${PROJ_LIBRARIES})
+target_link_libraries(coordinate_test ${catkin_LIBRARIES})
+target_link_libraries(pcd_latlon2mgrs ${catkin_LIBRARIES})
+target_link_libraries(pcd_jpxy2mgrs ${catkin_LIBRARIES})
 target_link_libraries(pcd_filter ${catkin_LIBRARIES})
 target_link_libraries(pcd_binarizer ${catkin_LIBRARIES})
 target_link_libraries(pcd_arealist ${catkin_LIBRARIES})
@@ -50,7 +50,8 @@ target_link_libraries(map_extender ${catkin_LIBRARIES})
 target_link_libraries(pcd_grid_divider ${catkin_LIBRARIES})
 
 
-install(TARGETS coodinate_test pcd_latlon2mgrs pcd_jpxy2mgrs pcd_filter pcd_binarizer pcd_arealist csv2pcd pcd2csv map_extender pcd_grid_divider
+install(TARGETS coordinate_test pcd_latlon2mgrs pcd_jpxy2mgrs pcd_filter pcd_binarizer pcd_arealist csv2pcd pcd2csv map_extender pcd_grid_divider
         ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
